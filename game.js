@@ -54,17 +54,24 @@ let questions = [
   },
 ];
 
-
-
 function questionLoop() {
   for (let i = 0; i < questions.length; i++) {
-    var response = question(questions[i]);
+    var response = question.questions[i];
   }
   if (response === questions[i].answer) {
     score++;
   }
 }
 
-function buttonClicked() {
-  document.getElementById(".choice-text") = ++i;
+var questionIndex = 0;
+
+function showQuestions() {
+  var theQuestion = questions[questionIndex];
+  document.getElementById("question").textContent = question.title;
+  var theChoices = document.getElementsByClassName("choicePrefix");
+  for (let index = 0; index < theChoices.length; index++) {
+    const element = theChoices[index];
+    element.textContent = question.option[index];
+    element.addEventListener("click", markAnswer);
+  }
 }
