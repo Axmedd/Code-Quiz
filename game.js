@@ -20,11 +20,13 @@ let questions = [
     answer: "Mogadishu",
   },
   {
-    question: "Is Somalia Is Three Times The Size Of The UK",
-    choice1: "Yes",
-    choice2: "Nope",
+    question: "Which Country Recently Had A Name Change?",
+    choice1: "Turkey",
+    choice2: "Romania",
+    choice3: "Jordan",
+    choice4: "Hungary",
 
-    answer: "Yes",
+    answer: "Turkey",
   },
   {
     question: "What is Capital Of Australia",
@@ -51,3 +53,18 @@ let questions = [
     answer: "Tokyo",
   },
 ];
+
+
+
+function questionLoop() {
+  for (let i = 0; i < questions.length; i++) {
+    var response = question(questions[i]);
+  }
+  if (response === questions[i].answer) {
+    score++;
+  }
+}
+
+function buttonClicked() {
+  document.getElementById(".choice-text") = ++i;
+}
