@@ -64,3 +64,32 @@ body {
   text-align: center;
   font-size: 30px;
 }
+
+.hide {
+  display: none;
+}
+
+#start-btn {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+#start-btn {
+  --hue: var(-- hue-neutral);
+  border: 1px solid hsl(var(-- hue), 188%, 38%);
+  background-color: #57636e;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  outline: none;
+}
+
+#start-btn {
+  display: flex;
+  justify-content: center;
+}
+
+#start-btn:hover {
+  cursor: pointer;
+}
