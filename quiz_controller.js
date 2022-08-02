@@ -13,9 +13,11 @@ Quiz.prototype.isEnded = function () {
 };
 
 Quiz.prototype.guess = function (answer) {
-  if (this.getQuestionIndex().correctAnswer(answer));
-  {
+  if (this.getQuestionIndex().correctAnswer(answer)) {
     this.score++;
+  } else {
+    this.score--;
   }
+
   this.questionIndex++;
 };
