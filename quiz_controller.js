@@ -21,3 +21,5 @@ Quiz.prototype.guess = function (answer) {
 
   this.questionIndex++;
 };
+
+// score function
