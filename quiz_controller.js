@@ -15,8 +15,8 @@ Quiz.prototype.isEnded = function () {
 Quiz.prototype.guess = function (answer) {
   if (this.getQuestionIndex().correctAnswer(answer)) {
     this.score++;
-  } else {
-    this.score--;
+  } else if (this.score >= 0) {
+    this.score -= 1;
   }
 
   this.questionIndex++;
