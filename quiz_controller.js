@@ -1,7 +1,7 @@
 const startButton = document.getElementById("start-btn");
 const questionContainerElement = document.getElementById(`question-container`);
 var timerSection = document.getElementById("timer-section");
-var timerSpan = document.getElementById("timer");
+var timerSpan = document.querySelector(".timer");
 //bn const questionCounterElement = document.getElementById(`question-counter`);
 
 var timer = 30;
@@ -15,13 +15,16 @@ function startGame() {
   questionContainerElement.classList.remove(`hide`);
   startButton.remove();
   // questionCounterElement.classList.remove(`hide`);
-  timerSection.style.display = "block";
+  // timerSection.style.display = "block";
   // initialise the timer
-  timerSpan.textContent = timer;
+  // timerSpan.textContent = timer;
 
-  timerInterval = setInterval(updateTime, 1000);
-  displayQuestion();
+  // timerInterval = setInterval(updateTime, 1000);
+  // displayQuestion();
 }
+
+// create updatetime function
+//
 
 function Quiz(questions) {
   this.score = 0;
@@ -43,12 +46,10 @@ Quiz.prototype.guess = function (answer) {
     console.log("add score", this.score);
   } else if (this.score < 0) {
     this.score = 0;
-  }
-
-  this.questionIndex++;
-  if (timer <= 0 || questionIndex === questions.length) {
-    quizEnd();
   } else {
-    displayQuestion();
+    this.questionIndex++;
+    if (timer <= 0 || this.questionIndex === questions.length) {
+      quiz.isEnded();
+    }
   }
 };
