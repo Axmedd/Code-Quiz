@@ -1,14 +1,38 @@
 const startButton = document.getElementById("start-btn");
 const questionContainerElement = document.getElementById(`question-container`);
-const questionCounterElement = document.getElementById(`question-counter`);
+var timerSection = document.getElementById("timer-section");
+var timerSpan = document.getElementById("timer");
+//bn const questionCounterElement = document.getElementById(`question-counter`);
+
+var timer = 30;
+var timerInterval;
 
 startButton.addEventListener("click", startGame);
 
+function updateTime() {
+  // reduce by 1
+  timer--;
+  // update or render
+  timerSpan.textContent = timer;
+  // if 0 stop
+  if (timer <= 0) {
+    clearInterval(timerInterval);
+    quizEnd();
+  }
+}
+
 function startGame() {
   console.log("started");
-  startButton.classList.add(`hide`);
-  //questionContainerElement.classList.remove(`hide`);
+  startButton.classList.add.hidden;
+  questionContainerElement.classList.remove(`hide`);
+  startButton.remove();
   // questionCounterElement.classList.remove(`hide`);
+  timerSection.style.display = "block";
+  // initialise the timer
+  timerSpan.textContent = timer;
+
+  timerInterval = setInterval(updateTime, 1000);
+  displayQuestion();
 }
 
 function Quiz(questions) {
@@ -34,6 +58,9 @@ Quiz.prototype.guess = function (answer) {
   }
 
   this.questionIndex++;
+  if (timer <= 0 || questionIndex === questions.length) {
+    quizEnd();
+  } else {
+    displayQuestion();
+  }
 };
-
-// score function

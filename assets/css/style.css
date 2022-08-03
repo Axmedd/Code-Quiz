@@ -93,3 +93,7 @@ body {
 #start-btn:hover {
   cursor: pointer;
 }
+
+.visibility {
+  visibility: hidden;
+}
