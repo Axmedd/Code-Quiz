@@ -9,18 +9,6 @@ var timerInterval;
 
 startButton.addEventListener("click", startGame);
 
-function updateTime() {
-  // reduce by 1
-  timer--;
-  // update or render
-  timerSpan.textContent = timer;
-  // if 0 stop
-  if (timer <= 0) {
-    clearInterval(timerInterval);
-    quiz.isEnded();
-  }
-}
-
 function startGame() {
   console.log("started");
   startButton.classList.add.hidden;
@@ -32,7 +20,7 @@ function startGame() {
   timerSpan.textContent = timer;
 
   timerInterval = setInterval(updateTime, 1000);
-  getQuestionIndex();
+  displayQuestion();
 }
 
 function Quiz(questions) {
@@ -59,8 +47,8 @@ Quiz.prototype.guess = function (answer) {
 
   this.questionIndex++;
   if (timer <= 0 || questionIndex === questions.length) {
-    quiz.isEnded();
+    quizEnd();
   } else {
-    this.getQuestionIndex();
+    displayQuestion();
   }
 };
