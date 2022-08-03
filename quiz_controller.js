@@ -17,7 +17,7 @@ function updateTime() {
   // if 0 stop
   if (timer <= 0) {
     clearInterval(timerInterval);
-    quizEnd();
+    quiz.isEnded();
   }
 }
 
@@ -32,7 +32,7 @@ function startGame() {
   timerSpan.textContent = timer;
 
   timerInterval = setInterval(updateTime, 1000);
-  displayQuestion();
+  getQuestionIndex();
 }
 
 function Quiz(questions) {
@@ -59,8 +59,8 @@ Quiz.prototype.guess = function (answer) {
 
   this.questionIndex++;
   if (timer <= 0 || questionIndex === questions.length) {
-    quizEnd();
+    quiz.isEnded();
   } else {
-    displayQuestion();
+    this.getQuestionIndex();
   }
 };
